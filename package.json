@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/NiqueDaSneak/emailpipeline/issues"
   },
-  "homepage": "https://github.com/NiqueDaSneak/emailpipeline#readme"
+  "homepage": "https://github.com/NiqueDaSneak/emailpipeline#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  }
 }

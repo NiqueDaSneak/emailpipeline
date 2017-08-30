@@ -18,6 +18,10 @@
   "homepage": "https://github.com/NiqueDaSneak/emailpipeline#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "nodemailer": "^4.1.0",
+    "nodemailer-mailgun-transport": "^1.3.5",
+    "path": "^0.12.7",
+    "save": "^2.3.1"
   }
 }

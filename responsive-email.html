@@ -104,6 +104,93 @@
       width: 75vw;
     }
 
+    section:nth-of-type(3) .head {
+      text-align: center;
+      color: #53A2DA;
+      margin-top: 7vh;
+      margin-bottom: 7vh;
+      font-size: 8vw;
+    }
+
+    .work-item {
+      margin-left: 10vw;
+    }
+
+
+    .work-item p:first-of-type {
+    }
+
+    .work-item p:nth-of-type(2) {
+
+    }
+
+    .work-item p:nth-of-type(3), .work-item p:nth-of-type(4) {
+      width: 75vw
+    }
+
+    .work-item a {
+      width: 75vw;
+      display: block;
+      text-align: center;
+      background-color: #3652FF;
+      text-decoration: none;
+      color: #F0EEE6;
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+    }
+
+    footer {
+      background-color: #53A2DA;
+      margin-top: 14vh;
+    }
+
+    footer header {
+      color: #94BBD1;
+      width: 90vw;
+      margin-left: 6.2vw;
+      text-align: center;
+      font-size: 3.5vw;
+      padding-top: 5vh;
+      margin-bottom: 7vh;
+    }
+
+    footer header span {
+      margin-right: 3.8vw;
+    }
+
+    .contacts a {
+      margin-left: 4vw;
+    }
+
+    .contacts a span:last-of-type {
+      display: block;
+      padding-left: 9vw;
+      margin-bottom: 4vh;    }
+
+    .contacts a img {
+      width: 4vw;
+      vertical-align: middle;
+    }
+
+    .contact {
+      width: 18vw;
+      margin-left: 41vw;
+      margin-bottom: 3vh;
+    }
+
+    footer div img:nth-of-type(1) {
+      width: 30vw;
+      margin-left: 4vw;
+      margin-right: 40vw;
+    }
+
+    footer div img:nth-of-type(2) {
+      margin-right: 2vw;
+    }
+
+    .bottom-row {
+      padding-bottom: 2vh;
+    }
 }
 
     </style>
@@ -142,18 +229,18 @@
     </section>
 
     <section>
-      <p>REQUESTED WORK</p>
+      <p class="head">REQUESTED WORK</p>
       <div class="work-item">
         <p>Archive of Thirst</p>
         <p>Rhinegeist Brewery</p>
-        <span>An award-winning campagin that helped Rhinegeist launch Cidergeist in two new markets. We connected with founders Bob Bonder and Bryant Goulding to distill Rhinegeist's culture into something their sales team could hold in their hands and make people say wow.</span>
+        <p>An award-winning campagin that helped Rhinegeist launch Cidergeist in two new markets. We connected with founders Bob Bonder and Bryant Goulding to distill Rhinegeist's culture into something their sales team could hold in their hands and make people say wow.</p>
         <a class="download-here" href="#">Download Here</a>
       </div>
       <div class="work-item">
         <p>A Brand Aquatic</p>
         <p>Eighth &amp; English</p>
-        <span>Chase B. cooked at the best restaurants in his city. He took over flailing kitches and turned them arounds. He quit the industry for five minutes and then came back because he missed the heat.</span>
-        <span>It was time for him to do him. It was time to open his own place. After taking over the lease to a built-out space, Chase asked us to build his brand. Together, we created Eighth &amp; English</span>
+        <p>Chase B. cooked at the best restaurants in his city. He took over flailing kitches and turned them arounds. He quit the industry for five minutes and then came back because he missed the heat.</p>
+        <p>It was time for him to do him. It was time to open his own place. After taking over the lease to a built-out space, Chase asked us to build his brand. Together, we created Eighth &amp; English</p>
         <a class="download-here" href="#">Download Here</a>
       </div>
     </section>
@@ -184,10 +271,12 @@
           <span>www.bsllc.biz</span>
         </a>
       </span>
-      <img src="/contact-icon.svg" alt="Contact Logo">
-      <img src="/pinnacleawardlogo.jpg" alt="Award Logo">
-      <img src="/linkedin-logo.svg" alt="LinkedIN">
-      <img src="/bbb-logo.svg" alt="BBB">
+      <img class="contact" src="/contact-icon.svg" alt="Contact Logo">
+      <div class="bottom-row">
+        <img src="/pinnacleawardlogo.jpg" alt="Award Logo">
+        <img src="/linkedin-logo.svg" alt="LinkedIN">
+        <img src="/bbb-logo.svg" alt="BBB">
+      </div>
     </footer>
   </body>
 </html>

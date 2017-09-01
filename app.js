@@ -5,13 +5,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const nodemailer = require('nodemailer')
-const xoauth2 = require('xoauth2')
 
 // APP DEFINITION & MIDDLEWARE
 var app = express()
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use(express.static('public'))
 
 var mg = require('nodemailer-mailgun-transport')
 
@@ -29,6 +29,10 @@ var nodemailerMailgun = nodemailer.createTransport(mg(auth))
 // ROUTES
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/form.html'))
+})
+
+app.get('/preview', (req, res) => {
+  res.sendFile(path.join(__dirname + '/responsive-email.html'))
 })
 
 app.post('/case-study-request', (req, res, next) => {

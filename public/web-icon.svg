@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="12px" viewBox="0 0 11 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 121</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0.221,6.257 C0.221,9.216 2.62,11.614 5.579,11.614 L5.579,11.614 C8.54,11.614 10.938,9.216 10.938,6.257 L10.938,6.257 C10.938,3.297 8.54,0.898 5.579,0.898 L5.579,0.898 C2.62,0.898 0.221,3.297 0.221,6.257" id="Fill-121" fill="url(#linearGradient-1)"></path>
+    </g>
+</svg>

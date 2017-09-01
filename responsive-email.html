@@ -7,6 +7,104 @@
   </head>
   <body>
     <style media="screen">
+    body {
+      margin: 0 auto;
+      background-color: #F0EEE6;
+    }
+
+    section:first-of-type {
+      padding-bottom: 6vh;
+
+    }
+    section:first-of-type header {
+      color: #D1D0C9;
+      width: 90vw;
+      margin-left: 6.2vw;
+      text-align: center;
+      font-size: 3.5vw;
+      padding-top: 5vh;
+    }
+
+    section:first-of-type header span {
+      margin-right: 3.8vw;
+    }
+
+    section:first-of-type img {
+      width: 10vw;
+      margin-left: 45vw;
+      padding-top: 4vh;
+    }
+
+    section:first-of-type .sideways {
+      text-align: center;
+    }
+    section:first-of-type .sideways p {
+      background-color: #342D1F;
+      width: 38vw;
+      color: #F0EEE6;
+      padding-bottom: 1vh;
+      padding-top: 1vh;
+      position: absolute;
+      left: -15.2vw;
+      top: 24vh;
+      transform: rotate(90deg);
+      font-size: 3.5vw;
+    }
+
+    .email-body {
+      width: 70vw;
+      margin-left: 15vw;
+    }
+
+    section:nth-of-type(2) {
+      background-color: #FFF9F9;
+      text-align: center;
+      padding-top: 5vh;
+      padding-bottom: 3vh;
+    }
+
+    section:nth-of-type(2) .sideways {
+      width: 100vw;
+      position: relative;
+      top: 11.7vh;
+    }
+
+
+    section:nth-of-type(2) span:first-of-type {
+      color: #53A2DA;
+      font-size: 4.4vw;
+    }
+
+    .who-is-text {
+      width: 75vw;
+      font-size: 3.2vw;
+      display: inline-block;
+      margin-top: 9vh;
+    }
+
+    section:nth-of-type(2) .sideways p {
+      color: #D1D0C9;
+      font-size: 3.5vw;
+      position: absolute;
+      margin: 0vh;
+    }
+
+    section:nth-of-type(2) .sideways p:first-of-type {
+      transform: rotate(90deg);
+      left: -6vw;
+    }
+
+    section:nth-of-type(2) .sideways p:nth-of-type(2) {
+      transform: rotate(-90deg);
+      right: -6vw;
+    }
+
+    .accent {
+      padding-top: 6vh;
+      width: 75vw;
+    }
+
+}
 
     </style>
 
@@ -21,7 +119,7 @@
       </header>
       <img class="logo" src="/bull-icon.svg" alt="Logo">
       <span class="sideways">
-        <p>BS LLC | 2017</p>
+        <p>BS&ensp;LLC&ensp;|&ensp;2017</p>
       </span>
       <div class="email-body">
         <p>Hi, xxxx,</p>
@@ -34,14 +132,12 @@
     </section>
 
     <section>
-      <p>but who is BS LLC?</p>
-      <span class="sideways">
+      <span>but who is BS LLC?</span>
+      <div class="sideways">
         <p>idea consulting</p>
-      </span>
-      <span>BS LLC is a creative consultancy focused on branding and marketing. We employ science and art, the cornerstones of effective and beautiful communication, to create meaningful solutions for brands.</span>
-      <span class="sideways">
         <p>results focused</p>
-      </span>
+      </div>
+      <p class="who-is-text">BS LLC is a creative consultancy focused on branding and marketing. We employ science and art, the cornerstones of effective and beautiful communication, to create meaningful solutions for brands.</p>
       <img class="accent" src="/tricolor.svg" alt="">
     </section>
 

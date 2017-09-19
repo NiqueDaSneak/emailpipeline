@@ -5,11 +5,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const nodemailer = require('nodemailer')
+const fs = require('fs')
 
 // APP DEFINITION & MIDDLEWARE
 var app = express()
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
@@ -32,26 +35,39 @@ app.get('/', (req, res) => {
 })
 
 app.get('/preview', (req, res) => {
+  // res.sendFile(path.join(__dirname + '/responsive-email.html'))
   res.sendFile(path.join(__dirname + '/responsive-email.html'))
 })
 
 app.post('/case-study-request', (req, res, next) => {
+  var email = fs.readFileSync('responsive-email.html', 'utf8')
   nodemailerMailgun.sendMail({
     from: 'info@BSLLC.biz',
     to: req.body.email, // An array if you have multiple recipients.
+    // to: [req.body.email, 'sebastien@bsllc.biz'], // An array if you have multiple recipients.
     // cc:'second@domain.com',
     // bcc:'secretagent@company.gov',
-    subject: 'Amazing News!',
+    subject: 'Test 9/12 60',
     // 'h:Reply-To': 'reply2this@company.com',
     //You can use "html:" to send HTML email content. It's magic!
-    html: '<b>Wow Big powerful letters</b>',
+    html: email,
+    attachments: [{
+        filename: 'Header.jpg',
+        path: "public/imgs/Header.jpg",
+        cid: 'bsllc@Header.jpg' //same cid value as in the html img src
+      },
+      {
+        filename: 'middle.jpg',
+        path: "public/imgs/middle.jpg",
+        cid: 'bsllc@middle.jpg' //same cid value as in the html img src
+      }
+    ],
     //You can use "text:" to send plain-text content. It's oldschool!
     text: 'Mailgun rocks, pow pow!'
-  }, function (err, info) {
+  }, function(err, info) {
     if (err) {
       console.log('Error: ' + err)
-    }
-    else {
+    } else {
       console.log('Response: ' + JSON.stringify(info))
     }
   })

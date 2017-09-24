@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/dashboard.js"></script>
+  </head>
+  <body>
+    <style media="screen">
+        input, textarea {
+          display: block;
+        }
+    </style>
+
+    <h1>Dashboard</h1>
+    <form action="index.html" method="post">
+      <input class="header" type="text" name="header" value="" placeholder="Header">
+      <input class="subhead" type="text" name="subhead" value="" placeholder="Subheading">
+      <textarea class="description" name="description" rows="8" cols="80" placeholder="Description"></textarea>
+      <input class="link" type="text" name="link" value="" placeholder="Link to assets">
+      <input type="text" name="type" value="" placeholder="type">
+      <button type="button" name="button">Submit</button>
+    </form>
+  </body>
+</html>

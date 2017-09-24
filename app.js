@@ -6,10 +6,11 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
+const app = express()
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
 
-// APP DEFINITION & MIDDLEWARE
-var app = express()
-
+// APP MIDDLEWARE
 app.use(bodyParser.urlencoded({
   extended: true
 }))
@@ -28,10 +29,38 @@ var auth = {
 
 var nodemailerMailgun = nodemailer.createTransport(mg(auth))
 
+// DATABASE SETUP
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://admin:adminpassword@ds147044.mlab.com:47044/bsllc-email-pipeline')
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'))
+
+var assetSchema = mongoose.Schema({
+  header: String,
+  subhead: String,
+  description: String,
+  link: String,
+  type: String
+})
+
+var Asset = mongoose.model('Asset', assetSchema)
+
+var recipientSchema = mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  email: String,
+  dateCreated: Date
+})
+
+var Recipient = mongoose.model('Recipient', recipientSchema)
 
 // ROUTES
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/form.html'))
+})
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname + '/dashboard.html'))
 })
 
 app.get('/preview', (req, res) => {
@@ -69,8 +98,10 @@ app.post('/case-study-request', (req, res, next) => {
       console.log('Error: ' + err)
     } else {
       console.log('Response: ' + JSON.stringify(info))
+      // SEND EMAIL TO DB
     }
   })
+
   res.sendStatus(200)
 })
 
@@ -98,9 +129,26 @@ app.post('/read-work', (req, res, next) => {
   res.sendStatus(200)
 })
 
+// SOCKET.IO
+io.on('connection', (socket) => {
+  console.log('Server connected to client!')
+
+  socket.on('saveAsset', (data) => {
+    console.log(data)
+    // DOES NOT SAVE data.type
+    var newAsset = new Asset({ header: data.header, subhead: data.subhead, description: data.description, link: data.link })
+    newAsset.save((err, asset) => {
+      if (err) {
+        console.log(err)
+      }
+      console.log(asset)
+    })
+  })
+})
+
 // SERVER LISTENING
 var port = process.env.PORT || 3000
-app.listen(port, function() {
+server.listen(port, function() {
   console.log('Server running on port ' + port)
 })
 app.on('error', function() {

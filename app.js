@@ -76,7 +76,7 @@ app.post('/case-study-request', (req, res, next) => {
     // to: [req.body.email, 'sebastien@bsllc.biz'], // An array if you have multiple recipients.
     // cc:'second@domain.com',
     // bcc:'secretagent@company.gov',
-    subject: 'Test 9/12 60',
+    subject: 'Test 9/12 62',
     // 'h:Reply-To': 'reply2this@company.com',
     //You can use "html:" to send HTML email content. It's magic!
     html: email,
@@ -99,6 +99,14 @@ app.post('/case-study-request', (req, res, next) => {
     } else {
       console.log('Response: ' + JSON.stringify(info))
       // SEND EMAIL TO DB
+      let date = new Date()
+      let newRecipient = new Recipient({ firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, dateCreated: date })
+      newRecipient.save((err, recipient) => {
+        if (err) {
+          console.log(err)
+        }
+        console.log(recipient)
+      })
     }
   })
 
@@ -136,12 +144,21 @@ io.on('connection', (socket) => {
   socket.on('saveAsset', (data) => {
     console.log(data)
     // DOES NOT SAVE data.type
-    var newAsset = new Asset({ header: data.header, subhead: data.subhead, description: data.description, link: data.link })
+    let newAsset = new Asset({ header: data.header, subhead: data.subhead, description: data.description, link: data.link })
     newAsset.save((err, asset) => {
       if (err) {
         console.log(err)
       }
       console.log(asset)
+    })
+  })
+
+  socket.on('requestRecipients', () => {
+    Recipient.find({}, (err, recipients) => {
+      if (err) {
+        console.log(err)
+      }
+      socket.emit('sendingRecipients', { data: recipients })
     })
   })
 })

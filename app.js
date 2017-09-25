@@ -49,7 +49,8 @@ var recipientSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   email: String,
-  dateCreated: Date
+  dateCreated: Date,
+  followedUp: Boolean
 })
 
 var Recipient = mongoose.model('Recipient', recipientSchema)
@@ -76,7 +77,7 @@ app.post('/case-study-request', (req, res, next) => {
     // to: [req.body.email, 'sebastien@bsllc.biz'], // An array if you have multiple recipients.
     // cc:'second@domain.com',
     // bcc:'secretagent@company.gov',
-    subject: 'Test 9/12 62',
+    subject: 'Test 9/12 63',
     // 'h:Reply-To': 'reply2this@company.com',
     //You can use "html:" to send HTML email content. It's magic!
     html: email,
@@ -100,7 +101,7 @@ app.post('/case-study-request', (req, res, next) => {
       console.log('Response: ' + JSON.stringify(info))
       // SEND EMAIL TO DB
       let date = new Date()
-      let newRecipient = new Recipient({ firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, dateCreated: date })
+      let newRecipient = new Recipient({ firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, dateCreated: date, followedUp: false })
       newRecipient.save((err, recipient) => {
         if (err) {
           console.log(err)
@@ -161,6 +162,20 @@ io.on('connection', (socket) => {
       socket.emit('sendingRecipients', { data: recipients })
     })
   })
+
+  socket.on('followedUp', (data) => {
+    Recipient.findOne({ email: data.email }, (err, recipient) => {
+      recipient.followedUp = true
+      recipient.save((err, recipient) => {
+        if (err) {
+          console.log(err)
+        }
+        socket.emit('recipientFollowUpChanged')
+        console.log(recipient)
+      })
+    })
+  })
+
 })
 
 // SERVER LISTENING

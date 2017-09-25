@@ -5,12 +5,16 @@
     <title>Dashboard</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="/js/dashboard.js"></script>
   </head>
   <body>
     <style media="screen">
         input, textarea {
           display: block;
+        }
+
+        .list-of-emails div span {
+          margin-right: 2vw;
         }
     </style>
 
@@ -25,13 +29,6 @@
     </form>
 
     <h1>List of emails</h1>
-    <div class="list-of-emails">
-      <div>
-        <span>Email</span>
-        <span>First</span>
-        <span>Last</span>
-        <button type="button" name="button">Remove From List</button>
-      </div>
-    </div>
+    <div class="list-of-emails"></div>
   </body>
 </html>

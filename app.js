@@ -184,7 +184,7 @@ app.post('/case-study-request', (req, res) => {
     // to: [req.body.email, 'sebastien@bsllc.biz'], // An array if you have multiple recipients.
     // cc:'second@domain.com',
     // bcc:'secretagent@company.gov',
-    subject: 'Test 9/12 68',
+    subject: 'BS LLC Case Study',
     // 'h:Reply-To': 'reply2this@company.com',
     //You can use "html:" to send HTML email content. It's magic!
     html: email,

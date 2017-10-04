@@ -15,8 +15,16 @@ $(document).ready(() => {
     socket.emit('followedUp', { email: $(event.target).data('email') })
   })
 
-  socket.emit('requestRecipients')
+  socket.emit('getAssetList')
+  socket.on('recieveAssetList', (data) => {
+    $('.manifest').append("<span>Research Question:</span><select class='' name='researchQuestion'></select><span>Design:</span><select class='' name='design'></select><span>Copywriting:</span><select class='' name='copywriting'></select>")
+    for (var i = 0; i < data.data.length; i++) {
+      $('select').prepend("<option value='" + data.data[i].header + "'>" + data.data[i].header + "</option>")
+    }
+    $('.manifest').append("<button type='button' name='button'>Submit Manifest Changes</button>")
+  })
 
+  socket.emit('requestRecipients')
   socket.on('recipientFollowUpChanged', () => {
     socket.emit('requestRecipients')
   })

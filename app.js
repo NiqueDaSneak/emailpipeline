@@ -93,7 +93,13 @@ app.post('/case-study-request', (req, res) => {
   }
 
   var firstName = req.body['your-name'].split(' ')[0]
-  // var email = fs.readFileSync('responsive-email.html', 'utf8')
+
+  function jsUcfirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  firstName = jsUcfirst(firstName)
+
   email = '<!DOCTYPE html>'+
   '<html>'+
   ''+
@@ -105,7 +111,7 @@ app.post('/case-study-request', (req, res) => {
   '<body style="color: #342e1f; margin: 0 auto; background-color: #F0EEE6; padding-top: 5vh;">'+
   '  <section style="margin-bottom: 14vh;">'+
   '    <img style="width: 100%; font-size: 10%;" src="cid:bsllc@Header.jpg" alt="Header Image">'+
-  '    <div style="width: 70%; margin-left: 15%;" class="email-body">'+
+  '    <div style="width: 85%; margin-left: 7.5%;" class="email-body">'+
   '      <p style="font-family: Courier New, lucida sans trypewriter, lucida typewriter, monspace">Hi ' + firstName + ',</p>'+
   '      <p style="font-family: Courier New, lucida sans trypewriter, lucida typewriter, monspace">We received your inquiry, so this is just a holdover to say thanks for reaching out. We\'re not into the belabored formalities of never-ending email exchanges, so if you\'d prefer to chat via phone, skype, or face-to-face over coffee, we\'re happy'+
   '        to set up a time to discuss your brand\'s challenges. If that\'s the case, then respond to this email with dates and times that work for you and we will get a meeting on the books.</p>'+
@@ -116,15 +122,15 @@ app.post('/case-study-request', (req, res) => {
   '    </div>'+
   '  </section>'+
   ''+
-  '  <img style="width: 100%;" src="cid:bsllc@middle.jpg" alt="">'+
+  '  <img style="width: 100%;" src="cid:bsllc@middle.png" alt="">'+
   ''+
   '  <section style="margin-bottom: 10vh;">'+
-  '    <p style="color: #54A3DA; margin-top: 7%; margin-bottom: 7%; font-style: italic; font-family: sans-serif; font-size: 13pt; margin-left: 12.5%" class="head">' + firstName + ', Your Requested Work</p>'+
+  '    <p style="color: #54A3DA; margin-top: 7%; margin-bottom: 7%; font-style: italic; font-family: sans-serif; font-size: 10pt; margin-left: 12.5%" class="head">' + firstName + ', Your Requested Work</p>'+
   '    <div class="work-item" style="margin-left: 12.5%;">'+
   '      <span style="font-family: \'Lato\', sans-serif; font-weight: bold; font-size: 14pt;">' + caseStudy.header + '</span>'+
   '      <span style="display: block; margin-bottom: 5vh; font-family: \'Lato\', sans-serif;">' + caseStudy.subHead + '</span>'+
   '      <p style="width: 75%; font-family: \'Lato\', sans-serif;">' + caseStudy.description + '</p>'+
-  '      <a class="download-here" href=' + caseStudy.link + ' style="max-width: 40%; text-align: center; display: block; background-color: #54a3da; text-decoration: none; color: #F0EEE6; padding-top: 2%; padding-bottom: 2%; margin-top: 10%; margin-bottom: 15%; font-family: \'Lato\', sans-serif;">Download Here</a>'+
+  '      <a class="download-here" href=' + caseStudy.link + ' style="max-width: 50%; text-align: center; display: block; background-color: #54a3da; text-decoration: none; color: #F0EEE6; padding-top: 2%; padding-bottom: 2%; margin-top: 10%; margin-bottom: 15%; font-family: \'Lato\', sans-serif;">Download Here</a>'+
   '    </div>'+
   '  </section>'+
   ''+
@@ -184,7 +190,7 @@ app.post('/case-study-request', (req, res) => {
     // to: [req.body.email, 'sebastien@bsllc.biz'], // An array if you have multiple recipients.
     // cc:'second@domain.com',
     // bcc:'secretagent@company.gov',
-    subject: 'BS LLC Case Study',
+    subject: "BS LLC, " + caseStudy.subHead + " Case Study",
     // 'h:Reply-To': 'reply2this@company.com',
     //You can use "html:" to send HTML email content. It's magic!
     html: email,
@@ -194,9 +200,9 @@ app.post('/case-study-request', (req, res) => {
         cid: 'bsllc@Header.jpg' //same cid value as in the html img src
       },
       {
-        filename: 'middle.jpg',
-        path: "public/imgs/middle.jpg",
-        cid: 'bsllc@middle.jpg' //same cid value as in the html img src
+        filename: 'middle.png',
+        path: "public/imgs/middle.png",
+        cid: 'bsllc@middle.png' //same cid value as in the html img src
       }
     ],
     //You can use "text:" to send plain-text content. It's oldschool!

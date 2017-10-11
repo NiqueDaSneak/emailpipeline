@@ -104,7 +104,7 @@ app.post('/case-study-request', (req, res) => {
   '<html>'+
   ''+
   '<head>'+
-  '  <meta charset="utf-8">'+
+  '  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'+
   '  <title>Email</title>'+
   '</head>'+
   ''+
@@ -122,7 +122,7 @@ app.post('/case-study-request', (req, res) => {
   '    </div>'+
   '  </section>'+
   ''+
-  '  <img style="width: 100%;" src="cid:bsllc@middle.png" alt="">'+
+  '  <img style="width: 100% !important; min-width: 100%;" src="cid:bsllc@middle.png" alt="">'+
   ''+
   '  <section style="margin-bottom: 10vh;">'+
   '    <p style="color: #54A3DA; margin-top: 7%; margin-bottom: 7%; font-style: italic; font-family: sans-serif; font-size: 10pt; margin-left: 12.5%" class="head">' + firstName + ', Your Requested Work</p>'+
